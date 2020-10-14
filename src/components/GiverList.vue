@@ -1,6 +1,6 @@
 <template>
-  <div id="giver-list">
-    <button @click="toggle(giver)" v-for="giver in givers" :key="giver.name" class="giver-toggle" :class="{ 'giver-selected': giver.selected }">
+  <div class="giver-list">
+    <button @click="toggleGiver(giver)" v-for="giver in givers" :key="giver.name" class="giver-toggle" :class="{ 'giver-selected': giver.selected }">
       <img class="giver-symbol" :src="giver.symbol" :alt="giver.name" />
       <span class="giver-name">{{ giver.name }}</span>
     </button>
@@ -8,24 +8,19 @@
 </template>
 
 <script>
-import { givers } from '../GameData';
+import { mapGetters, mapMutations } from 'vuex';
 
 export default {
   name: 'giver-list',
-  data: function() {
-    return {
-      givers: givers.map(function(giver) {
-        return {
-          name: giver,
-          symbol: `/images/giver-symbols/${giver}.png`,
-          selected: false
-        }})
-    }
+  computed: {
+    ...mapGetters([
+      'givers'
+    ])
   },
   methods: {
-    toggle(giver) {
-      giver.selected = !giver.selected;
-    }
+    ...mapMutations([
+      'toggleGiver'
+    ])
   }
 }
 </script>
