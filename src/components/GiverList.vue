@@ -33,7 +33,6 @@ export default {
 <style>
 .giver-symbol {
   height: 100%;
-  filter: saturate(50%);
 }
 
 .giver-toggle {
@@ -63,7 +62,4 @@ export default {
   color: #ffffff;
 }
 
-.giver-selected .giver-symbol {
-  filter: saturate(100%);
-}
 </style>
