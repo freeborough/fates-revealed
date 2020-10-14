@@ -45,9 +45,15 @@ export default {
   background: none;
   border: none;
   cursor: pointer;
+  filter: drop-shadow(.1em .1em .1em #000000);
+}
+
+.giver-selected {
+  filter: drop-shadow(.1em .1em .2em #666666);
 }
 
 .giver-name {
+  font-family: BerlinSmallCaps;
   color: #8c8c8c;
   padding-left: 0.3em;
   flex-grow: 1;

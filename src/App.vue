@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>Fates Revealed</h1>
+    <h1 id="logo">Fates Revealed</h1>
     <GiverList></GiverList>
   </div>
 </template>
@@ -18,10 +18,27 @@ export default {
 
 <style>
 
+@font-face {
+  font-family: 'Capitalis';
+  src: url('/fonts/CapitalisTypOasis.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'BerlinSmallCaps';
+  font-display: swap;
+  src: url('/fonts/BerlinSmallCaps.ttf') format('truetype');
+}
+
 body {
   background-color: #191919;
   color: #8c8c8c;
-  font-family: sans-serif;
+  font-family: BerlinSmallCaps;
+}
+
+#logo {
+  font-family: Capitalis;
+  text-transform: uppercase;
+  color: #ffffa3;
 }
 
 </style>
