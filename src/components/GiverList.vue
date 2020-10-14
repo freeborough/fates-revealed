@@ -61,7 +61,6 @@ export default {
 
 .giver-selected .giver-name {
   color: #ffffff;
-  text-decoration: underline;
 }
 
 .giver-selected .giver-symbol {
