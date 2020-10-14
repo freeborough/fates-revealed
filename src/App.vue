@@ -38,7 +38,7 @@ body {
 #logo {
   font-family: Capitalis;
   text-transform: uppercase;
-  color: #ffffa3;
+  color: #2ce975;
 }
 
 </style>
