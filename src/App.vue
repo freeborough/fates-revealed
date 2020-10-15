@@ -34,9 +34,20 @@ export default {
   src: url('/fonts/BerlinSmallCaps.ttf') format('truetype');
 }
 
+:root {
+  --main-background: #191919;
+  --main-text: #8c8c8c;
+  --main-highlight: #eeeeee;
+  --alternate-highlight: #86e851;
+  --class-duo: #d2ff61;
+  --class-legendary: #ff9000;
+  --ui-shade: #222222;
+  --ui-highlight: #574e3e;
+}
+
 body {
-  background-color: #191919;
-  color: #8c8c8c;
+  background-color: var(--main-background);
+  color: var(--main-text);
   font-family: BerlinSmallCaps;
 }
 
