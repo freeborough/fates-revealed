@@ -130,6 +130,10 @@ export default {
   width: 16em;
 }
 
+.boon-modifier-attribute:after {
+  content: ':';
+}
+
 .boon-modifier-value {
   color: var(--alternate-highlight);
   font-weight: bold;

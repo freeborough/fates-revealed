@@ -3,6 +3,7 @@
     <div id="top-bar">
       <h1 id="logo">Fates Revealed</h1>
     </div>
+    <TagList id="tags"></TagList>
     <GiverList id="givers"></GiverList>
     <BoonList id="boons"></BoonList>
   </div>
@@ -11,12 +12,14 @@
 <script>
 import GiverList from './components/GiverList';
 import BoonList from './components/BoonList';
+import TagList from './components/TagList';
 
 export default {
   name: 'App',
   components: {
     GiverList,
-    BoonList
+    BoonList,
+    TagList,
   }
 }
 </script>
@@ -55,8 +58,8 @@ body {
   display: grid;
   grid-template-columns: max-content auto;
   grid-template-areas:
-    "top-bar top-bar"
-    "givers boons";
+    "top-bar top-bar top-bar"
+    "tags givers boons";
 }
 
 #top-bar {
@@ -65,6 +68,11 @@ body {
 
 #givers {
   grid-area: givers;
+  padding-left: 1vw;
+}
+
+#tags {
+  grid-area: tags;
 }
 
 #boons {

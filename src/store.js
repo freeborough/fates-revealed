@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { givers, boons } from './GameData';
+import { givers, boons, tags } from './GameData';
 
 Vue.use(Vuex);
 
@@ -15,14 +15,21 @@ export default new Vuex.Store({
       return {
         name: giver,
         symbol: `/images/giver-symbols/${giver}.png`,
-        selected: false
-      }}),
+        selected: false,
+      }
+    }),
     /**
      * Simple an array of all the boons as provided by the game data.
      * 
      * TODO: See what performance is like on mobile devices and see if it would be worth creating per-giver indexes to the boons.
      */
     boons,
+    tags: tags.map(function(tag) {
+      return {
+        name: tag,
+        selected: false,
+      }
+    }),
   },
   getters: {
     /**
@@ -38,12 +45,32 @@ export default new Vuex.Store({
       return state.givers.filter(giver => giver.selected);
     },
     /**
-     * This gets all boons that match the currently selected elements.  At the moment that's just the givers, but there will be more soon.
+     * Returns all tags.
+     */
+    tags: (state) => {
+      return state.tags;
+    },
+    /**
+     * Returns all currently selected tags.
+     */
+    selectedTags: (state) => {
+      return state.tags.filter(tag => tag.selected);
+    },
+    /**
+     * This gets all boons that match the currently selected elements.  This includes:
+     *  - Givers
+     *  - Tags
      */
     matchingBoons: (state, getters) => {
       const selectedGiverNames = getters.selectedGivers.map(g => g.name);
-      return state.boons.filter(boon => boon.giver.some(g => selectedGiverNames.includes(g)));
-    }
+      const selectedTagNames = getters.selectedTags.map(t => t.name);
+
+      return state.boons.filter((boon) => {
+        return boon.giver.some(g => selectedGiverNames.includes(g)) && boon.tags.some(t => selectedTagNames.includes(t));
+      }
+      );
+    },
+
   },
   mutations: {
     /**
@@ -53,6 +80,14 @@ export default new Vuex.Store({
      */
     toggleGiver (state, giver) {
      giver.selected = !giver.selected;
+    },
+    /**
+     * Toggles the selected state of the specified tag (from true to false, and false to true).
+     * 
+     * @param {tag} tag The tag to toggle.
+     */
+    toggleTag (state, tag) {
+      tag.selected = !tag.selected;
     },
   }
 });

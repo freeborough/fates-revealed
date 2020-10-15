@@ -34,8 +34,8 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: 8vh;
-  font-size: 4vh;
+  height: 2em;
+  font-size: 2em;
   background: none;
   border: none;
   cursor: pointer;
@@ -48,13 +48,13 @@ export default {
 
 .giver-name {
   font-family: BerlinSmallCaps;
-  color: #8c8c8c;
+  color: var(--main-text);
   padding-left: 0.3em;
   flex-grow: 1;
 }
 
 .giver-selected .giver-name {
-  color: #ffffff;
+  color: var(--main-highlight);
 }
 
 </style>
