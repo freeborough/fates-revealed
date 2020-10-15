@@ -335,4 +335,35 @@ const boons = [
   }
 ];
 
-export  { givers, weapons, boons };
+/**
+ * Generate tags for all the boons by extracting them from their description(s), modifiers, and slot.
+ * Return a distinct list of all tags so we can use them in the UI easily.
+ */
+const tags = function generateTags () {
+  let result = [];
+
+  for (let i = 0; i < boons.length; i++) {
+    let boon = boons[i];
+    let boonTags = [];
+
+    // Extract from the description all text between [ and ].
+    let descriptionTags = boon.description.matchAll(/\[(.+?)\]/g);
+    if (descriptionTags != null) {
+      for (const descriptionTag of descriptionTags) {
+        boonTags.push(descriptionTag[1]);
+      }
+    }
+    
+    // Make sure the list of tags is unique and then write it to the boon.
+    boonTags = [...new Set(boonTags)];
+    boon.tags = boonTags;
+
+    result = result.concat(boonTags);
+  }
+
+  result = [...new Set(result)].sort();
+ 
+  return result;
+}();
+
+export  { givers, weapons, boons, tags };
